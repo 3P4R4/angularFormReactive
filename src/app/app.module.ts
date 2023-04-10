@@ -13,12 +13,14 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatSliderModule} from '@angular/material/slider'; 
 import {MatButtonModule} from '@angular/material/button';
+import { ValidacionesPersonalizadasComponent } from './validaciones-personalizadas/validaciones-personalizadas.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BasicFormComponent
+    BasicFormComponent,
+    ValidacionesPersonalizadasComponent
   ],
   imports: [
     BrowserModule,

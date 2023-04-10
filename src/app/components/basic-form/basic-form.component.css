@@ -25,3 +25,12 @@
 
 }
 
+.btn{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+mat-card.mat-mdc-card{
+	display: flex;
+	justify-content: center;	
+}

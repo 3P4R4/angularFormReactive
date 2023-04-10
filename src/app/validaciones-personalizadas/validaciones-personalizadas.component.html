@@ -1,0 +1,29 @@
+<h1>Validaciones Personalizadas Trabajando...</h1>
+
+
+<mat-card class="contenedorCard">
+<mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+    <div *ngIf="form.get('password').touched && form.get('password').invalid">
+        <mat-error *ngIf="form.get('password')?.hasError">Debes incluir un caracter númerico</mat-error>
+    </div>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+</mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Re-Ingrese su password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+</mat-form-field>
+</mat-card>
