@@ -9,7 +9,9 @@ import { MyValidators } from "../utils/validators";
 })
 export class ValidacionesPersonalizadasComponent {
     hide = true;
+
     form!: FormGroup;
+
     constructor(
       private formBuilder: FormBuilder
     ){
@@ -17,8 +19,18 @@ export class ValidacionesPersonalizadasComponent {
     }
     private builderForm() {
       this.form = this.formBuilder.group({
-        email:['', Validators.required],
+        name:['', Validators.required],
         password:['', [Validators.required, Validators.minLength(6), MyValidators.validPassword]],
     });
+}
+
+get passwdField(){
+  return this.form.get('name') as FormControl;
+}
+get ispasswordFieldError(){
+  return this.passwdField.hasError('invalid_passwd')
+}
+get ispasswordFieldinValid(){
+  return this.passwdField.touched && this.passwdField.invalid
 }
 }

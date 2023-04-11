@@ -8,7 +8,7 @@ export class MyValidators{
             return {price_invalid: true};
         }
         return null;
-    }
+    };
 
     static validPassword(control:AbstractControl){
         const value = control.value;
@@ -16,13 +16,13 @@ export class MyValidators{
             return{invalid_passwd: true}
         }
         return null;
-    }
+    };
 
-    function containNumber(value:string) {
-        return value.split('').find(v=>isNumber(v)) !==undefined
-    }
+}
+function containNumber(value:string) {
+    return value.split('').find(v=>isNumber(v)) !==undefined
+};
 
-    function isNumber(value:string){
-        return !isNaN(parseInt(value, 10));
-    }
+function isNumber(value:string){
+    return !isNaN(parseInt(value, 10));
 }
