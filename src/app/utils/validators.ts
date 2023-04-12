@@ -12,11 +12,20 @@ export class MyValidators{
 
     static validPassword(control:AbstractControl){
         const value = control.value;
-        if (!containNumber) {
+        if (!containNumber(value)) {
             return{invalid_passwd: true}
         }
         return null;
     };
+
+    static confirPassword(control:AbstractControl){
+        const password = control.get('password')?.value;
+        const confirmPasswd = control.get('confirmPassword')?.value;
+        if(password===confirmPasswd){
+            return null;
+        }
+        return {concidenciaPassword: true}
+    }
 
 }
 function containNumber(value:string) {

@@ -21,11 +21,15 @@ export class ValidacionesPersonalizadasComponent {
       this.form = this.formBuilder.group({
         name:['', Validators.required],
         password:['', [Validators.required, Validators.minLength(6), MyValidators.validPassword]],
-    });
+        confirmPassword: ['', Validators.required]
+    },{
+      Validators: MyValidators.confirPassword
+    }
+    );
 }
 
 get passwdField(){
-  return this.form.get('name') as FormControl;
+  return this.form.get('password') as FormControl;
 }
 get ispasswordFieldError(){
   return this.passwdField.hasError('invalid_passwd')

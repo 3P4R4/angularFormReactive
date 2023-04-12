@@ -9,20 +9,21 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                <div *ngIf="ispasswordFieldinValid">
-                    <mat-error *ngIf="ispasswordFieldError">Debes incluir un caracter númerico</mat-error>
-                </div>
-
-            
+            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">    
+            <div *ngIf="ispasswordFieldinValid">
+                <mat-error *ngIf="ispasswordFieldError">Debe contener un número</mat-error>
+            </div>       
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Re-Ingrese su password</mat-label>
-            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+            <mat-label>Confirmar su password</mat-label>
+            <input formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'">
+            <div *ngIf="ispasswordFieldinValid">
+                <mat-error *ngIf="ispasswordFieldError">Los password deben coincidir</mat-error>
+            </div>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -30,3 +31,8 @@
         </mat-form-field>
     </mat-card>
 </form>
+<mat-card>
+<div class="btn">
+    <button mat-flat-button color="primary">Enviar</button>
+</div>
+</mat-card>
