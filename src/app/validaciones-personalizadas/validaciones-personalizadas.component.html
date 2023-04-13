@@ -9,7 +9,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">    
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">    
             <div *ngIf="ispasswordFieldinValid">
                 <mat-error *ngIf="ispasswordFieldError">Debe contener un número</mat-error>
             </div>       
@@ -20,9 +20,9 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Confirmar su password</mat-label>
-            <input formControlName="confirmPassword" matInput [type]="hide ? 'password' : 'text'">
-            <div *ngIf="ispasswordFieldinValid">
-                <mat-error *ngIf="ispasswordFieldError">Los password deben coincidir</mat-error>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmarPassword">
+            <div *ngIf="form.get('confirmPassword')?.touched">
+                <mat-error *ngIf="erroConfirmPasswd">Los password deben coincidir</mat-error>
             </div>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">

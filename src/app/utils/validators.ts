@@ -18,10 +18,10 @@ export class MyValidators{
         return null;
     };
 
-    static confirPassword(control:AbstractControl){
+    static confirmarPassword(control:AbstractControl){
         const password = control.get('password')?.value;
-        const confirmPasswd = control.get('confirmPassword')?.value;
-        if(password===confirmPasswd){
+        const confirmPassword = control.get('confirmPassword')?.value;
+        if(password===confirmPassword){
             return null;
         }
         return {concidenciaPassword: true}

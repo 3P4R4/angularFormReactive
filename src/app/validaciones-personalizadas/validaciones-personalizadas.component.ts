@@ -21,9 +21,9 @@ export class ValidacionesPersonalizadasComponent {
       this.form = this.formBuilder.group({
         name:['', Validators.required],
         password:['', [Validators.required, Validators.minLength(6), MyValidators.validPassword]],
-        confirmPassword: ['', Validators.required]
+        confirmPassword: ['', [Validators.required]]
     },{
-      Validators: MyValidators.confirPassword
+      Validators: MyValidators.confirmarPassword
     }
     );
 }
@@ -36,5 +36,15 @@ get ispasswordFieldError(){
 }
 get ispasswordFieldinValid(){
   return this.passwdField.touched && this.passwdField.invalid
+}
+/**Confirmar**/
+get campoConfirmarPasswd(){
+  return this.form.get('confirmPassword') as FormControl;
+}
+get erroConfirmPasswd(){
+  return this.campoConfirmarPasswd.hasError('concidenciaPassword')
+}
+get touchedConfirmPasswd(){
+  return this.campoConfirmarPasswd.touched 
 }
 }
