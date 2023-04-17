@@ -13,6 +13,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatSliderModule} from '@angular/material/slider'; 
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
 import { ValidacionesPersonalizadasComponent } from './validaciones-personalizadas/validaciones-personalizadas.component';
 
 
@@ -33,7 +34,8 @@ import { ValidacionesPersonalizadasComponent } from './validaciones-personalizad
     MatDatepickerModule,
     MatFormFieldModule,
     MatSliderModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule
 
   ],
   providers: [],

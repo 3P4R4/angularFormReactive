@@ -9,10 +9,10 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">    
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
             <div *ngIf="ispasswordFieldinValid">
                 <mat-error *ngIf="ispasswordFieldError">Debe contener un número</mat-error>
-            </div>       
+            </div>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -20,8 +20,8 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Confirmar su password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmarPassword">
-            <div *ngIf="form.get('confirmPassword')?.touched">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
+            <div *ngIf="touchedConfirmPasswd">
                 <mat-error *ngIf="erroConfirmPasswd">Los password deben coincidir</mat-error>
             </div>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -29,10 +29,22 @@
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
+        <div class="row">
+            <mat-radio-group formControlName="type" aria-label="Seleciona una opción">
+                <mat-radio-button value="company">Company</mat-radio-button>
+                <mat-radio-button value="costumer">Costumer</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row" *ngIf="form.controls['type'].value === 'company'">
+            <mat-form-field appearance="fill">
+                <mat-label>Company Name</mat-label>
+                <input matInput formControlName="companyName" type="text">
+            </mat-form-field>
+        </div>
     </mat-card>
 </form>
 <mat-card>
-<div class="btn">
-    <button mat-flat-button color="primary">Enviar</button>
-</div>
+    <div class="btn" >
+        <button mat-flat-button color="primary">Enviar</button>
+    </div>
 </mat-card>

@@ -21,11 +21,23 @@ export class ValidacionesPersonalizadasComponent {
       this.form = this.formBuilder.group({
         name:['', Validators.required],
         password:['', [Validators.required, Validators.minLength(6), MyValidators.validPassword]],
-        confirmPassword: ['', [Validators.required]]
+        confirmPassword: ['', [Validators.required]],
+        type: ['company', [Validators.required]],
+        companyName: ['company', [Validators.required]]
     },{
-      Validators: MyValidators.confirmarPassword
+      validators: MyValidators.confirmarPassword
     }
     );
+    this.typeField?.valueChanges.subscribe(value => {
+      if (value === 'company') {
+        this.companyNameField?.setValidators([Validators.required]);
+        //this.showCompany = true;
+      } else {
+        this.companyNameField?.setValidators(null);
+        //this.showCompany = false;
+      }
+      this.companyNameField?.updateValueAndValidity();
+    });
 }
 
 get passwdField(){
@@ -45,6 +57,15 @@ get erroConfirmPasswd(){
   return this.campoConfirmarPasswd.hasError('concidenciaPassword')
 }
 get touchedConfirmPasswd(){
-  return this.campoConfirmarPasswd.touched 
+  return this.campoConfirmarPasswd.touched && this.campoConfirmarPasswd.errors 
 }
+/*************/
+
+get typeField(){
+  return this.form.get('type');
+}
+get companyNameField(){
+  return this.form.get('companyName'); 
+}
+
 }
